@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LocalMesh Sverige – MeshCore för alla</title>
+  <meta name="description" content="LocalMesh Sverige bygger ett decentraliserat radionätverk med MeshCore. Kommunicera fritt utan internet eller mobilnät – perfekt för beredskap och nödsituationer." />
+  <meta property="og:title" content="LocalMesh Sverige" />
+  <meta property="og:description" content="Fri kommunikation utan internet. Decentraliserat meshnätverk med MeshCore för Sverige." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container">
+      <a href="#" class="nav-logo">
+        <span class="logo-mesh">Local</span><span class="logo-se">Mesh</span>
+        <span class="logo-country">SE</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Öppna meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#vad-ar-meshcore">Vad är MeshCore?</a></li>
+        <li><a href="#beredskap">Beredskap</a></li>
+        <li><a href="#kom-igang">Kom igång</a></li>
+        <li><a href="#nod">Sätt upp en nod</a></li>
+        <li><a href="#resurser" class="nav-cta">Resurser</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <canvas id="mesh-canvas"></canvas>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        MeshCore Sverige
+      </div>
+      <h1 class="hero-title">
+        Kommunikation<br />
+        <span class="gradient-text">när det verkligen gäller</span>
+      </h1>
+      <p class="hero-subtitle">
+        LocalMesh Sverige bygger ett decentraliserat radionätverk med MeshCore –
+        fritt från internet, mobilnät och central infrastruktur. Fungerar när
+        allt annat slutar fungera.
+      </p>
+      <div class="hero-actions">
+        <a href="#kom-igang" class="btn btn-primary">Kom igång</a>
+        <a href="#nod" class="btn btn-secondary">Sätt upp en nod</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-icon">📡</span>
+          <span class="stat-label">Ingen internetuppkoppling krävs</span>
+        </div>
+        <div class="stat">
+          <span class="stat-icon">🔒</span>
+          <span class="stat-label">End-to-end-krypterat</span>
+        </div>
+        <div class="stat">
+          <span class="stat-icon">⚡</span>
+          <span class="stat-label">Fungerar vid strömavbrott</span>
+        </div>
+      </div>
+    </div>
+    <a href="#vad-ar-meshcore" class="hero-scroll" aria-label="Scrolla ned">
+      <div class="scroll-arrow"></div>
+    </a>
+  </section>
+
+  <!-- ===== VAD ÄR MESHCORE ===== -->
+  <section class="section" id="vad-ar-meshcore">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tekniken</span>
+        <h2>Vad är MeshCore?</h2>
+        <p>
+          MeshCore är ett öppet kommunikationssystem som använder
+          <strong>LoRa-radioteknik</strong> för att skapa ett decentraliserat
+          meshnätverk. Varje enhet är en nod som vidarebefordrar meddelanden –
+          utan servrar, utan abonnemang, utan infrastruktur.
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">📻</div>
+          <h3>LoRa-radio</h3>
+          <p>
+            Använder LoRa (Long Range) radioteknik som kan nå
+            <strong>flera kilometer</strong> på en enda batteri­laddning.
+            Perfekt för glest bebyggda områden och kuperad terräng.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🕸</div>
+          <h3>Meshnätverk</h3>
+          <p>
+            Varje nod vidarebefordrar automatiskt meddelanden till
+            grannarna. Ju fler noder, desto längre räckvidd och
+            desto mer robust nätverk.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔐</div>
+          <h3>Krypterat &amp; privat</h3>
+          <p>
+            All kommunikation är end-to-end-krypterad. Inga konton,
+            inga tredjepartsservrar, inga loggade samtal. Din
+            kommunikation stannar i nätverket.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3>Öppen källkod</h3>
+          <p>
+            MeshCore är ett öppet projekt som drivs av en global
+            gemenskap. Koden är granskbar, modifierbar och fri
+            att använda.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-text">
+          <h3>Hur fungerar det?</h3>
+          <p>
+            Du köper en liten LoRa-kompatibel enhet – ungefär lika stor som en
+            tändsticksask – och installerar MeshCore-firmware. Enheten söker
+            automatiskt upp andra noder i närheten och bildar ett nät.
+            Meddelanden hoppar från nod till nod tills de når sin destination.
+          </p>
+          <p>
+            Det behövs ingen internetanslutning, ingen central server och ingen
+            operatör. Nätverket är självläkande: om en nod försvinner hittar
+            trafiken en ny väg.
+          </p>
+        </div>
+        <div class="info-visual">
+          <div class="mesh-diagram">
+            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="mesh-svg">
+              <!-- Connections -->
+              <line x1="60" y1="60" x2="150" y2="40" class="mesh-line active" />
+              <line x1="150" y1="40" x2="240" y2="60" class="mesh-line" />
+              <line x1="60" y1="60" x2="90" y2="140" class="mesh-line active" />
+              <line x1="90" y1="140" x2="150" y2="160" class="mesh-line active" />
+              <line x1="150" y1="40" x2="150" y2="160" class="mesh-line" />
+              <line x1="240" y1="60" x2="210" y2="140" class="mesh-line" />
+              <line x1="210" y1="140" x2="150" y2="160" class="mesh-line" />
+              <line x1="90" y1="140" x2="210" y2="140" class="mesh-line" />
+              <line x1="60" y1="60" x2="150" y2="160" class="mesh-line" />
+              <line x1="150" y1="40" x2="210" y2="140" class="mesh-line" />
+              <!-- Nodes -->
+              <circle cx="60" cy="60" r="10" class="mesh-node source" />
+              <circle cx="150" cy="40" r="8" class="mesh-node relay" />
+              <circle cx="240" cy="60" r="8" class="mesh-node" />
+              <circle cx="90" cy="140" r="8" class="mesh-node relay" />
+              <circle cx="150" cy="160" r="10" class="mesh-node dest" />
+              <circle cx="210" cy="140" r="8" class="mesh-node" />
+              <!-- Labels -->
+              <text x="60" y="42" text-anchor="middle" class="mesh-label">Du</text>
+              <text x="150" y="178" text-anchor="middle" class="mesh-label">Mottagare</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BEREDSKAP ===== -->
+  <section class="section section-dark" id="beredskap">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Beredskap</span>
+        <h2>När infrastrukturen sviktar</h2>
+        <p>
+          Sverige förbättrar sitt civila försvar och sin krisberedskap.
+          MeshCore är ett konkret verktyg som ger dig kommunikationsförmåga
+          oavsett vad som händer.
+        </p>
+      </div>
+
+      <div class="scenarios">
+        <div class="scenario">
+          <div class="scenario-icon">🌩</div>
+          <div class="scenario-content">
+            <h3>Stormar &amp; naturkatastrofer</h3>
+            <p>
+              Kraftiga oväder slår ut elledningar och mobilmaster.
+              Med MeshCore kan grannar och byar hålla kontakten och
+              koordinera hjälpinsatser – utan el och utan mobilnät.
+            </p>
+          </div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-icon">⚡</div>
+          <div class="scenario-content">
+            <h3>Strömavbrott</h3>
+            <p>
+              MeshCore-enheter drivs av batterier och solceller.
+              De fungerar i dagar eller veckor utan elnät och håller
+              kommunikationen uppe när lamporna slocknat.
+            </p>
+          </div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-icon">🏔</div>
+          <div class="scenario-content">
+            <h3>Avlägsna områden</h3>
+            <p>
+              Fjäll, skogar och skärgård saknar ofta täckning.
+              Med ett lokalt MeshCore-nätverk kan du kommunicera
+              på platser där varken 4G eller satellit räcker.
+            </p>
+          </div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-icon">🛡</div>
+          <div class="scenario-content">
+            <h3>Civilt försvar</h3>
+            <p>
+              MSB uppmanar alla att ta ansvar för sin egen beredskap.
+              Ett lokalt meshnätverk stärker motståndskraften och ger
+              din bygd en kommunikationsförmåga helt under lokal kontroll.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="callout-icon">💡</span>
+        <p>
+          <strong>Visste du?</strong> MSB rekommenderar att varje hushåll
+          ska klara sig självständigt i minst <strong>72 timmar</strong> vid
+          en kris. En MeshCore-enhet är ett enkelt sätt att säkra
+          kommunikationen under den perioden – och långt därutöver.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KOM IGÅNG ===== -->
+  <section class="section" id="kom-igang">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Guide</span>
+        <h2>Kom igång på 4 steg</h2>
+        <p>
+          Att komma igång med MeshCore är enklare än du tror.
+          Du behöver ingen specialkunskap – bara lite vilja och
+          en budget på ungefär <strong>300–600 kr</strong>.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Köp hårdvara</h3>
+            <p>
+              Skaffa en LoRa-kompatibel enhet. Populära val inkluderar:
+            </p>
+            <ul class="device-list">
+              <li><code>Heltec WiFi LoRa 32</code> – budgetvänlig</li>
+              <li><code>LILYGO T-Echo</code> – inbyggd display &amp; GPS</li>
+              <li><code>LILYGO T-Beam</code> – stark räckvidd</li>
+              <li><code>RAK WisBlock</code> – modulär &amp; flexibel</li>
+            </ul>
+            <p class="step-note">
+              Se till att enheten stöder 868 MHz (EU-band).
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Installera MeshCore-firmware</h3>
+            <p>
+              Ladda ner senaste firmware från MeshCore-projektet på GitHub.
+              Flasha enheten via USB med verktyget som medföljer – tar ungefär
+              5 minuter.
+            </p>
+            <a href="https://github.com/ripplebiz/MeshCore" target="_blank" rel="noopener" class="btn btn-small">
+              MeshCore på GitHub →
+            </a>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Konfigurera</h3>
+            <p>
+              Ange ditt namn och region (Europa/868 MHz) i MeshCore-appen
+              på din telefon eller via webbgränssnittet. Välj ett kanalnamn
+              för din lokala grupp.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Anslut &amp; kommunicera</h3>
+            <p>
+              Slå på enheten och se vilka grannar som dyker upp.
+              Skicka ditt första meddelande! Kontakta din lokala
+              MeshCore-grupp för att lägga till din nod på kartan.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <h4>🔧 Teknisk tips för Sverige</h4>
+        <p>
+          Använd <strong>868 MHz</strong> – det är det lagliga frekvensbandet
+          för LoRa i Sverige och hela EU. Kontrollera att din enhet är
+          inställd på rätt band innan du börjar sända.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SÄTT UPP EN NOD ===== -->
+  <section class="section section-accent" id="nod">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag section-tag-dark">Bygg nätverket</span>
+        <h2>Sätt upp en fast nod –<br />stärk beredskapen</h2>
+        <p>
+          Varje fast nod du sätter upp förbättrar nätverket för alla.
+          En nod på ett hustak, en stuga eller en mast kan täcka
+          kilometerlånga sträckor och länka samman din bygd.
+        </p>
+      </div>
+
+      <div class="node-benefits">
+        <div class="benefit">
+          <div class="benefit-icon">📶</div>
+          <h3>Ökar räckvidden</h3>
+          <p>
+            En fast nod i bra läge kan bridga kommunikation mellan
+            användare som annars inte kan nå varandra direkt.
+          </p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">🔄</div>
+          <h3>Självläkande nät</h3>
+          <p>
+            Fler noder ger fler alternativa vägar. Om en nod
+            faller bort hittar nätverket automatiskt en ny rutt.
+          </p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">🏘</div>
+          <h3>Stärker lokalsamhället</h3>
+          <p>
+            Du bidrar till ett kommunikationsystem som hela din bygd
+            kan luta sig mot när det krisar – ett konkret bidrag
+            till civilförsvaret.
+          </p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">☀️</div>
+          <h3>Solcell &amp; batteri</h3>
+          <p>
+            En nod kräver minimal ström. En liten solpanel och ett
+            LiFePO4-batteri håller noden igång dygnet runt, året runt.
+          </p>
+        </div>
+      </div>
+
+      <div class="node-setup">
+        <h3>Vad behövs för en fast nod?</h3>
+        <div class="node-parts">
+          <div class="node-part">
+            <span class="part-icon">📟</span>
+            <div>
+              <strong>LoRa-enhet</strong>
+              <span>T.ex. Heltec eller RAK WisBlock</span>
+            </div>
+          </div>
+          <div class="node-part">
+            <span class="part-icon">📡</span>
+            <div>
+              <strong>Utomhusantenn</strong>
+              <span>868 MHz riktad eller rundstrålande</span>
+            </div>
+          </div>
+          <div class="node-part">
+            <span class="part-icon">☀️</span>
+            <div>
+              <strong>Solpanel + batteri</strong>
+              <span>5–10 W panel + 10 Ah LiFePO4</span>
+            </div>
+          </div>
+          <div class="node-part">
+            <span class="part-icon">🏠</span>
+            <div>
+              <strong>Vädertåligt hölje</strong>
+              <span>IP65-klassad box för utomhusbruk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-center">
+        <a href="#kom-igang" class="btn btn-primary btn-large">
+          Börja idag
+        </a>
+        <a href="https://github.com/ripplebiz/MeshCore" target="_blank" rel="noopener" class="btn btn-outline btn-large">
+          Dokumentation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESURSER ===== -->
+  <section class="section" id="resurser">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Hjälp &amp; Gemenskap</span>
+        <h2>Resurser</h2>
+        <p>
+          Allt du behöver för att komma igång och hålla dig uppdaterad.
+        </p>
+      </div>
+
+      <div class="resources">
+        <a href="https://github.com/ripplebiz/MeshCore" target="_blank" rel="noopener" class="resource-card">
+          <div class="resource-icon">💻</div>
+          <h3>MeshCore GitHub</h3>
+          <p>Källkod, firmware-releaser och teknisk dokumentation.</p>
+          <span class="resource-link">github.com/ripplebiz/MeshCore →</span>
+        </a>
+        <a href="https://discord.gg/meshcore" target="_blank" rel="noopener" class="resource-card">
+          <div class="resource-icon">💬</div>
+          <h3>Discord-community</h3>
+          <p>Diskutera, ställ frågor och hitta MeshCore-entusiaster från hela världen.</p>
+          <span class="resource-link">Discord →</span>
+        </a>
+        <a href="https://www.msb.se/sv/amnesomraden/krisberedskap-civilt-forsvar/individens-ansvar-vid-kris/" target="_blank" rel="noopener" class="resource-card">
+          <div class="resource-icon">🛡</div>
+          <h3>MSB – Din beredskap</h3>
+          <p>Myndigheten för samhällsskydd och beredskaps råd om civil beredskap i Sverige.</p>
+          <span class="resource-link">msb.se →</span>
+        </a>
+        <a href="https://www.krisinformation.se" target="_blank" rel="noopener" class="resource-card">
+          <div class="resource-icon">🇸🇪</div>
+          <h3>Krisinformation.se</h3>
+          <p>Officiell information om krisberedskap och vad du bör förbereda i Sverige.</p>
+          <span class="resource-link">krisinformation.se →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo">
+          <span class="logo-mesh">Local</span><span class="logo-se">Mesh</span>
+          <span class="logo-country">SE</span>
+        </span>
+        <p>
+          LocalMesh Sverige är ett ideellt community-projekt för att
+          sprida MeshCore i Sverige. Ej kopplat till Meshtastic.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4>Snabblänkar</h4>
+        <ul>
+          <li><a href="#vad-ar-meshcore">Vad är MeshCore?</a></li>
+          <li><a href="#beredskap">Beredskap</a></li>
+          <li><a href="#kom-igang">Kom igång</a></li>
+          <li><a href="#nod">Sätt upp en nod</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Projekt</h4>
+        <ul>
+          <li><a href="https://github.com/ripplebiz/MeshCore" target="_blank" rel="noopener">MeshCore GitHub</a></li>
+          <li><a href="https://localmesh.nl" target="_blank" rel="noopener">localmesh.nl</a></li>
+          <li><a href="https://localmesh.de" target="_blank" rel="noopener">localmesh.de</a></li>
+          <li><a href="https://localmesh.co.uk" target="_blank" rel="noopener">localmesh.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>
+          LocalMesh Sverige &copy; 2025 –
+          Byggt med kärlek för det svenska civilsamhället.
+          MeshCore är ett öppet källkodsprojekt.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
